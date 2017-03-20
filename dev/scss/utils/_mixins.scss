@@ -1,0 +1,271 @@
+@mixin clearfix() {
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+@mixin reset(){
+  margin:0;
+  padding:0;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin box-sizing($box-model) {
+  -webkit-box-sizing: $box-model; // Safari <= 5
+     -moz-box-sizing: $box-model; // Firefox <= 19
+          box-sizing: $box-model;
+}
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+@mixin text-shadow($x: 2px, $y: 2px, $blur: 5px, $color: rgba(0,0,0,.4)) {
+    text-shadow: $x $y $blur $color;
+}
+
+@mixin box-shadow($x: 2px, $y: 2px, $blur: 5px, $spread: 5px, $color: rgba(0,0,0,.4)) {
+    -webkit-box-shadow: $x $y $blur $spread $color;
+    box-shadow: $x $y $blur $spread $color;
+}
+
+@mixin background-opacity($color:'dark', $opacity:0.5) {
+  @if $color == 'dark'{
+    background: rgba(0, 0, 0, $opacity); 
+  }
+   @if $color == 'light'{
+    background: rgba(255, 255, 255, $opacity); 
+  }
+}
+
+@mixin background-color($color) {
+  background:$color;
+  @if $color == $primary-color{
+  	color:$primary-text-color;
+  }
+  @if $color == $secondary-color{
+  	color:$secondary-text-color;
+  }
+  @if $color == $light-color{
+  	color:$light-text-color;
+  }
+  @if $color == $dark-color{
+  	color:$dark-text-color;
+  }
+  @if $color == $success-color{
+    color:#ffffff;
+  }
+  @if $color == $info-color{
+    color:#ffffff;
+  }
+  @if $color == $warning-color{
+    color:#ffffff;
+  }
+  @if $color == $danger-color{
+    color:#ffffff;
+  }
+}
+
+@mixin transparent-overlay($rgba:standard-trans) {
+  @if($rgba == 'rgba(0,0,0,0.5)') {
+    background-color:rgba(0,0,0,0.5);
+  } @else {
+    background-color:$rgba;
+  }
+}
+
+@mixin linear-gradient($fromColor, $toColor) {
+  background-color: $toColor; /* Fallback Color */
+  background-image: -webkit-gradient(linear, left top, left bottom, from($fromColor), to($toColor)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, $fromColor, $toColor); /* Chrome 10+, Saf5.1+, iOS 5+ */
+  background-image:    -moz-linear-gradient(top, $fromColor, $toColor); /* FF3.6 */
+  background-image:     -ms-linear-gradient(top, $fromColor, $toColor); /* IE10 */
+  background-image:      -o-linear-gradient(top, $fromColor, $toColor); /* Opera 11.10+ */
+  background-image:         linear-gradient(top, $fromColor, $toColor);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#{$fromColor}', EndColorStr='#{$toColor}');
+}
+
+@mixin add-border($size, $color, $position){
+  @if $position == 'top-bottom'{
+    border-top:$size solid $color;
+    border-bottom:$size solid $color;
+  } @else if $position == 'right-left'{
+    border-right:$size solid $color;
+    border-left:$size solid $color;
+  } @else if $position == 'top-left'{
+    border-top:$size solid $color;
+    border-left:$size solid $color;
+  } @else if $position == 'top'{
+    border-top:$size solid $color;
+  } @else if $position == 'bottom'{
+    border-bottom:$size solid $color;
+  } @else if $position == 'right'{
+    border-right:$size solid $color;
+  } @else if $position == 'left'{
+    border-left:$size solid $color;
+  } @else if $position == 'all'{
+    border:$size solid $color;
+  }
+}
+
+@mixin set-padding($px, $position){
+  @if $position == 'top-bottom'{
+    padding-top:$px;
+    padding-bottom:$px;
+  } @else if $position == 'right-left'{
+    padding-right:$px;
+    padding-left:$px;
+  } @else if $position == 'top'{
+    padding-top:$px;
+  } @else if $position == 'bottom'{
+    padding-bottom:$px;
+  } @else if $position == 'right'{
+    padding-right:$px;
+  } @else if $position == 'left'{
+    padding-left:$px;
+  } @else if $position == 'all'{
+    padding:$px;
+  }
+}
+
+@mixin set-margin($px, $position){
+  @if $position == 'top-bottom'{
+    margin-top:$px;
+    margin-bottom:$px;
+  } @else if $position == 'right-left'{
+    margin-right:$px;
+    margin-left:$px;
+  } @else if $position == 'right-bottom'{
+    margin-right:$px;
+    margin-bottom:$px;
+  } @else if $position == 'left-bottom'{
+    margin-left:$px;
+    margin-bottom:$px;
+  } @else if $position == 'top'{
+    margin-top:$px;
+  } @else if $position == 'bottom'{
+    margin-bottom:$px;
+  } @else if $position == 'right'{
+    margin-right:$px;
+  } @else if $position == 'left'{
+    margin-left:$px;
+  } @else if $position == 'all'{
+    margin:$px;
+  }
+}
+
+// at least for mobile-first
+@mixin min-width($width) {
+  @media (min-width: $width) {
+    @content; 
+  }
+}
+
+// max-width
+@mixin max-width($width) {
+  @media screen and (max-width: $width) {
+    @content; 
+  }
+}
+
+//centering
+@mixin center($xy:xy) {
+  @if $xy==xy {
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    right: auto;
+    @include translate(-50%, -50%);
+  }
+  @else if $xy==x {
+    left: 50%;
+    right: auto;
+    @include translate(-50%, 0);
+  }
+  @else if $xy==y {
+    top: 50%;
+    bottom: auto;
+    @include translate(0, -50%);
+  }
+}
+
+//frame
+@mixin shadow() {
+  box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.48);
+}
+
+//Converting px to em
+
+@mixin em($px, $em: $font-size-base) {
+  @return($px / $em) * 1em;
+}
+
+//Making a Sticky Footer
+@mixin sticky() {
+  min-height: 100vh;
+}
+
+//Creating diagonal borders
+@mixin diagonal-border($top, $right, $left, $bottom, $color:$brand-primary, $dir:tb) {
+  @if $dir==tb {
+    &:before {
+      content:'';
+      position:absolute;
+      border-left:$left solid transparent;
+      border-right:$right solid transparent;
+      border-top:$top solid $color;
+      width:50%;
+      top:100%;
+      left:auto;
+      right:0%;
+    }
+    &:after {
+      content:'';
+      position:absolute;
+      border-left:$left solid transparent;
+      border-right:$right solid transparent;
+      border-top:$top solid $color;
+      width:50%;
+      top:100%;
+      left:0%;
+      right:auto;
+    }
+  }
+  @else if $dir==bt {
+    &:before {
+      content:'';
+      position:absolute;
+      border-left:$left solid transparent;
+      border-right:$right solid transparent;
+      border-bottom:$bottom solid $color;
+      width:50%;
+      top:100%;
+      left:auto;
+      right:0%;
+    }
+    &:after {
+      content:'';
+      position:absolute;
+      border-left:$left solid transparent;
+      border-right:$right solid transparent;
+      border-bottom:100px solid $brand-primary;
+      width:50%;
+      top:100%;
+      left:0%;
+      right:auto;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+.container-fluid {
+	max-width: 1170px;
+}
+.show-on-hover {
+	@include max-width($grid-float-breakpoint-max) {
+		&:not(.open)>.dropdown-menu, &:not(.open):hover>.dropdown-menu {
+			display: none;
+		}
+	}
+	&:hover>.dropdown-menu {
+		display: block;
+	}
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+iframe[name="google_conversion_frame"] {
+	display: none;
+}

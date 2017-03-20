@@ -1,0 +1,33 @@
+/* Font Options */
+$main-font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+$bebas: 'bebas_neueregular', sans-serif;
+$bebas-light: 'bebas_neuelight', sans-serif;
+$bebas-book: 'bebas_neuebook', sans-serif;
+
+$main-font-size: 16px;
+
+/* Colors */
+$brand-primary: #eb0045;
+$brand-dark: #231f20;
+
+$brand-secondary: #3484BE;
+$brand-tertiary:#223E64;
+
+$light-color:#f4f4f4;
+$light-text-color:#666666;
+
+$dark-color: $brand-dark;
+$dark-text-color:#ffffff;
+
+/* Context Colors */
+$brand-success: #5cb85c !default;
+$brand-info: #5bc0de !default;
+$brand-warning: #f0ad4e !default;
+$brand-danger: #d9534f !default;
+
+// Breakpoints
+$screen-xs : 480px;
+$screen-sm : 768px;
+$screen-md : 992px;
+$screen-lg : 1200px;

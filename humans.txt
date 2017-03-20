@@ -1,0 +1,15 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Joseph Bona -- Author -- @bootcasts
+
+# THANKS
+
+    Twitter Bootstrap - http://getbootstrap.com/
+
+# TECHNOLOGY COLOPHON
+
+    CSS3, HTML5
+    Apache Server Configs, jQuery, Modernizr, TWBS 3.3.x

@@ -1,0 +1,48 @@
+.lined {
+	overflow: hidden;
+	text-align: center;
+	margin: 30px 0;
+
+	&:before, &:after {
+		background-color: #ccc;
+		content: "";
+		display: inline-block;
+		height: 1px;
+		position: relative;
+		vertical-align: middle;
+		width: 50%;
+	}
+	&:before {
+		right: .5em;
+		margin-left: -50%;
+	}
+	&:after {
+		left: .5em;
+		margin-right: -50%;
+	}
+}
+
+.check-list {
+	@extend .list-unstyled;
+
+	li {
+		&:before {
+			font-family: 'FontAwesome';
+			content: '\f00c';
+			margin: 0 0.5em 0 0;
+			color: $brand-primary;
+		}
+	}
+}
+
+.wrench-list {
+	@extend .list-unstyled;
+
+	li {
+		&:before {
+			font-family: 'FontAwesome';
+			content: '\f0ad';
+			margin: 0 0.5em 0 0;
+		}
+	}
+}

@@ -1,0 +1,47 @@
+// Default WYSIWYG classes
+.alignleft, img.alignleft {
+	float: left;
+	@include set-margin(.5em,right-bottom);
+
+	@include max-width($screen-sm) {
+		float: none;
+		display: block;
+		margin:.5em auto;
+	}
+}
+.alignright, img.alignright {
+	float: right;
+	@include set-margin(.5em,left-bottom);
+
+	@include max-width($screen-sm) {
+		float: none;
+		display: block;
+		margin:.5em auto;
+	}	
+}
+.aligncenter, img.aligncenter {
+	display: block;
+	margin: .5em auto;
+}
+.alignnone, img.alignnone {}
+
+.wp-caption {}
+.wp-caption img {}
+.wp-caption p.wp-caption-text {}
+
+.wp-smiley {}
+
+blockquote.left {}
+blockquote.right {}
+
+.gallery dl {}
+.gallery dt {}
+.gallery dd {}
+.gallery dl a {}
+.gallery dl img {}
+.gallery-caption {}
+
+.size-full {}
+.size-large {}
+.size-medium {}
+.size-thumbnail {}
