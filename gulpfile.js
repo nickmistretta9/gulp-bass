@@ -27,14 +27,14 @@ gulp.task('images', function() {
 });
 
 gulp.task('font-concat', function() {
-	var bootstrap = gulp.src('node_modules/bootstrap/**/*')
-	.pipe('dev/fonts/bootstrap'));
+	var bootstrap = gulp.src('node_modules/bootstrap/fonts/**/*')
+	.pipe(gulp.dest('dev/fonts/bootstrap'));
 	
 	var fontawesome = gulp.src('node_modules/font-awesome/**/*')
-	.pipe('dev/fonts'));
+	.pipe(gulp.dest('dev/fonts'));
 
 	var slick = gulp.src('node_modules/slick-carousel/slick/fonts/**/*')
-	.pipe('dev/fonts'));
+	.pipe(gulp.dest('dev/fonts'));
 
 	return merge(bootstrap, fontawesome, slick);
 });
@@ -46,22 +46,22 @@ gulp.task('font-compile', function() {
 
 gulp.task('plugins-concat', function() {
 	var slick = gulp.src('node_modules/slick-carousel/slick/slick.min.js')
-	.pipe('dev/js/vendor'));
+	.pipe(gulp.dest('dev/js/vendor'));
 
 	var magnific = gulp.src('node_modules/magnific-popup/dist/jquery.magnific-popup.min.js')
-	.pipe('dev/js/vendor'));
+	.pipe(gulp.dest('dev/js/vendor'));
 
 	var bootstrap = gulp.src('node_modules/bootstrap/dist/js/bootstrap.min.js')
-	.pipe('dev/js/vendor'));
+	.pipe(gulp.dest('dev/js/vendor'));
 
 	var match = gulp.src('node_modules/jquery-match-height/dist/jquery.matchHeight-min.js')
-	.pipe('dev/js/vendor'));
+	.pipe(gulp.dest('dev/js/vendor'));
 
-	var aos = gulp.src('node_modules/aos/aos.js')
-	.pipe('dev/js/vendor'));
+	var aos = gulp.src('node_modules/aos/dist/aos.js')
+	.pipe(gulp.dest('dev/js/vendor'));
 
 	var parallax = gulp.src('node_modules/jquery-parallax.js/parallax.min.js')
-	.pipe('dev/js/vendor'));
+	.pipe(gulp.dest('dev/js/vendor'));
 
 	return merge(slick, magnific, bootstrap, match, aos, parallax);
 });
