@@ -31,3 +31,7 @@ npm install gulp-cache --save-dev
 npm install del --save-dev
 
 npm install run-sequence --save-dev
+
+npm install --save-dev gulp-babel babel-preset-es2015
+
+npm install --save-dev gulp merge-stream
