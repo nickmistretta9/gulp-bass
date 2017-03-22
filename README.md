@@ -10,8 +10,10 @@
 ```
  to initialize gulp file structure 
    * Runs through npm init, which creates package.json file, and installs all necessary gulp plugins to use this structure
+
 4. Edit plugins.sh file as necessary to whatever plugins are needed for project
    * Can remove any, need to find npm install version of any additional plugins 
+
 5. Run plugins script 
 ```
 #!bash
@@ -27,6 +29,7 @@ gulp
 ```
 to start server, pre-processor, live-reload, browser sync, watch, etc
    * Must use ctrl+c to end live-reload, or it will cause errors to re-start server
+
 7. Edit/add/delete files as necessary, terminal will run a bunch of commands each time something is saved
 8. End the live reload (ctrl+c) and run 
 ```
