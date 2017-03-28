@@ -105,6 +105,10 @@ gulp.task('browser-sync', ['php'], function() {
 gulp.task('sass', function() {
 	return gulp.src('dev/scss/**/*.scss')
 	.pipe(sass())
+	.on('error', function(err) {
+		console.log(err.toString());
+		this.emit('end');
+	})
 	.pipe(gulp.dest('dev/css'))
 	.pipe(reload({
 		stream:true
