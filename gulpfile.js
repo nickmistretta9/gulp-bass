@@ -128,3 +128,6 @@ gulp.task('watch', ['browser-sync', 'sass'], function() {
 gulp.task('default', function(callback) {
 	runSequence(['sass', 'font-concat', 'plugins-concat', 'browser-sync', 'watch'], callback) 
 });
+
+
+gulp.task('js', function());
