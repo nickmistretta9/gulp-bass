@@ -116,7 +116,7 @@ gulp.task('sass', function() {
 });
 
 gulp.task('build', function (callback) {
-	runSequence('clean:dist', ['sass', 'useref', 'babel', 'images','font-concat', 'font-compile'], callback) 
+	runSequence('clean:dist', ['sass', 'useref', 'autoprefixer', 'babel', 'images', 'font-compile'], callback) 
 });
 
 gulp.task('watch', ['browser-sync', 'sass'], function() {
