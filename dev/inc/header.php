@@ -20,6 +20,10 @@
 
 </head>
 <body>
+<?php if( ! ini_get('date.timezone') )
+{
+    date_default_timezone_set('EST');
+} ?>
 <div id="st-container" class="st-container">
     <nav class="st-menu st-effect-4" id="menu-4">
         <h2>Main Navigation</h2>

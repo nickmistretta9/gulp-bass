@@ -203,8 +203,8 @@
 }
 
 //frame
-@mixin shadow() {
-  box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.48);
+@mixin shadow($color:rgba(0, 0, 0, 0.48)) {
+  box-shadow: 2px 2px 3px 1px $color;
 }
 
 //Converting px to em
