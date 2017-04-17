@@ -269,3 +269,8 @@
     }
   }
 }
+
+//Background image centering
+@function background-focus($ratio, $bg, $box: 50) {
+  @return (($bg + (50 - $box)/$ratio - 50) * ($ratio / ($ratio - 1)) + 50) * 1%;
+}
