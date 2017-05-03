@@ -89,7 +89,7 @@ gulp.task('php', function() {
 gulp.task('autoprefixer', function() {
 	return gulp.src('dev/src/*.css')
 	.pipe(postcss([autoprefixer()]))
-	.pipe(gulp.dest('dist/css'));
+	.pipe(gulp.dest('dev/css'));
 });
 
 gulp.task('browser-sync', ['php'], function() {
@@ -115,8 +115,14 @@ gulp.task('sass', function() {
 	}))
 });
 
+gulp.task('styles', function() {
+	return gulp.src('dev/css/*.css')
+	.pipe(cssnano())
+	.pipe(gulp.dest('dist/css'))
+});
+
 gulp.task('build', function (callback) {
-	runSequence('clean:dist', ['sass', 'useref', 'autoprefixer', 'babel', 'images', 'font-compile'], callback) 
+	runSequence('clean:dist', ['sass', 'useref', 'autoprefixer', 'babel', 'images', 'font-compile'], 'styles', callback) 
 });
 
 gulp.task('watch', ['browser-sync', 'sass'], function() {
