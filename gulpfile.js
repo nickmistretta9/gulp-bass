@@ -60,9 +60,6 @@ gulp.task('plugins-concat', function() {
 	var aos = gulp.src('node_modules/aos/dist/aos.js')
 	.pipe(gulp.dest('dev/js/vendor'));
 
-	var parallax = gulp.src('node_modules/jquery-parallax.js/parallax.min.js')
-	.pipe(gulp.dest('dev/js/vendor'));
-
 	return merge(slick, magnific, bootstrap, match, aos, parallax);
 });
 
