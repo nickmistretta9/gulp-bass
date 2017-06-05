@@ -11,3 +11,7 @@ npm install aos
 npm install jquery-match-height
 
 npm install magnific-popup
+
+gulp plugins
+
+gulp fonts

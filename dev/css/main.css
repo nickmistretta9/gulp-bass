@@ -7691,7 +7691,7 @@ iframe[name="google_conversion_frame"] {
 .st-menu h2 {
   margin: 0;
   padding: 1em;
-  color: #5bc0de;
+  color: #fff;
   text-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
   font-weight: 300;
   font-size: 2em; }
@@ -7701,7 +7701,7 @@ iframe[name="google_conversion_frame"] {
   padding: 1em 1em 1em 1.2em;
   outline: none;
   box-shadow: inset 0 -1px rgba(0, 0, 0, 0.2);
-  color: #f3efe0;
+  color: #fff;
   text-transform: uppercase;
   text-shadow: 0 0 1px rgba(255, 255, 255, 0.1);
   -webkit-transition: background 0.3s, box-shadow 0.3s;
@@ -7742,8 +7742,3 @@ iframe[name="google_conversion_frame"] {
 
 .st-effect-4.st-menu::after {
   display: none; }
-
-/* Fallback example for browsers that don't support 3D transforms (and no JS fallback) */
-.no-csstransforms3d .st-pusher,
-.no-js .st-pusher {
-  padding-left: 300px; }

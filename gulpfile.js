@@ -5,7 +5,6 @@ var gulp = require('gulp'),
 	postcss = require('gulp-postcss'),
 	php = require('gulp-connect-php'),
 	useref = require('gulp-useref'),
-	reload = browserSync.reload,
 	uglify = require('gulp-uglify'),
 	cssnano = require('gulp-cssnano'),
 	gulpIf = require('gulp-if'),
@@ -13,8 +12,9 @@ var gulp = require('gulp'),
 	cache = require('gulp-cache'),
 	del = require('del'),
 	babel = require('gulp-babel'),
-	merge = require('merge-stream'),
 	runSequence = require('run-sequence');
+
+var reload = browserSync.reload;
 
 gulp.task('clean:dist', function() {
 	return del.sync('dist');
@@ -26,41 +26,15 @@ gulp.task('images', function() {
 	.pipe(gulp.dest('dist/images'))
 });
 
-gulp.task('font-concat', function() {
-	var bootstrap = gulp.src('node_modules/bootstrap/fonts/**/*')
-	.pipe(gulp.dest('dev/fonts/bootstrap'));
-	
-	var fontawesome = gulp.src('node_modules/font-awesome/**/*')
-	.pipe(gulp.dest('dev/fonts'));
-
-	var slick = gulp.src('node_modules/slick-carousel/slick/fonts/**/*')
-	.pipe(gulp.dest('dev/fonts'));
-
-	return merge(bootstrap, fontawesome, slick);
-});
-
-gulp.task('font-compile', function() {
-	return gulp.src('dev/fonts/**/*')
+gulp.task('fonts', function() {
+	return gulp.src('node_modules/**/fonts/**/*')
+	.pipe(gulp.dest('dev/fonts'))
 	.pipe(gulp.dest('dist/fonts'))
 });
 
-gulp.task('plugins-concat', function() {
-	var slick = gulp.src('node_modules/slick-carousel/slick/slick.min.js')
-	.pipe(gulp.dest('dev/js/vendor'));
-
-	var magnific = gulp.src('node_modules/magnific-popup/dist/jquery.magnific-popup.min.js')
-	.pipe(gulp.dest('dev/js/vendor'));
-
-	var bootstrap = gulp.src('node_modules/bootstrap/dist/js/bootstrap.min.js')
-	.pipe(gulp.dest('dev/js/vendor'));
-
-	var match = gulp.src('node_modules/jquery-match-height/dist/jquery.matchHeight-min.js')
-	.pipe(gulp.dest('dev/js/vendor'));
-
-	var aos = gulp.src('node_modules/aos/dist/aos.js')
-	.pipe(gulp.dest('dev/js/vendor'));
-
-	return merge(slick, magnific, bootstrap, match, aos, parallax);
+gulp.task('plugins', function() {
+	return gulp.src('node_modules/**/*.js')
+	.pipe(gulp.dest('dev/vendor'))
 });
 
 gulp.task('babel', function() {
@@ -83,10 +57,14 @@ gulp.task('php', function() {
 	php.server({base: 'dev', port: 8010, keepalive:true});
 });
 
-gulp.task('autoprefixer', function() {
-	return gulp.src('dev/src/*.css')
-	.pipe(postcss([autoprefixer()]))
-	.pipe(gulp.dest('dev/css'));
+gulp.task('css', function() {
+	var plugins = [
+		autoprefixer({browsers:['last 2 versions']}),
+		cssnano()
+	];
+	return gulp.src('dev/css/*.css')
+	.pipe(postcss(plugins))
+	.pipe(gulp.dest('dist/css'));
 });
 
 gulp.task('browser-sync', ['php'], function() {
@@ -112,14 +90,8 @@ gulp.task('sass', function() {
 	}))
 });
 
-gulp.task('styles', function() {
-	return gulp.src('dev/css/*.css')
-	.pipe(cssnano())
-	.pipe(gulp.dest('dist/css'))
-});
-
 gulp.task('build', function (callback) {
-	runSequence('clean:dist', ['sass', 'useref', 'autoprefixer', 'babel', 'images', 'font-compile'], 'styles', callback) 
+	runSequence('clean:dist', ['useref', 'babel', 'images'], 'css', callback) 
 });
 
 gulp.task('watch', ['browser-sync', 'sass'], function() {
@@ -129,5 +101,5 @@ gulp.task('watch', ['browser-sync', 'sass'], function() {
 });
 
 gulp.task('default', function(callback) {
-	runSequence(['sass', 'font-concat', 'plugins-concat', 'browser-sync', 'watch'], callback) 
+	runSequence(['sass', 'browser-sync', 'watch'], callback) 
 });
