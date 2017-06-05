@@ -32,11 +32,14 @@ gulp.task('fonts', function() {
 	.pipe(gulp.dest('dist/fonts'))
 });
 
+// gulp.task('plugins', function() {
+// 	return gulp.src('node_modules/**/*.js')
+// 	.pipe(gulp.dest('dev/js/vendor'))
+// });
 gulp.task('plugins', function() {
-	return gulp.src('node_modules/**/*.js')
+	return gulp.src('bower_components/**/*.min.js || bower_components/**/*.js')
 	.pipe(gulp.dest('dev/js/vendor'))
 });
-
 gulp.task('babel', function() {
 	return gulp.src('dev/js/**/*.js')
 	.pipe(babel({

@@ -2,16 +2,16 @@
 
 clear
 
-npm install bootstrap@3
+bower install bootstrap
 
-npm install slick-carousel
+bower install slick-carousel
 
-npm install aos
+bower install aos
 
-npm install jquery-match-height
+bower install jquery-match-height
 
-npm install magnific-popup
+bower install magnific-popup
 
 gulp plugins
 
-gulp fonts
+# gulp fonts
