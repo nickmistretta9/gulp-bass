@@ -27,14 +27,14 @@ gulp.task('images', function() {
 });
 
 gulp.task('fonts', function() {
-	return gulp.src('node_modules/**/fonts/**/*')
+	return gulp.src('node_modules/**/fonts/**/*.+(svg|woff|woff2|ttf|eot|otf)')
 	.pipe(gulp.dest('dev/fonts'))
 	.pipe(gulp.dest('dist/fonts'))
 });
 
 gulp.task('plugins', function() {
 	return gulp.src('node_modules/**/*.js')
-	.pipe(gulp.dest('dev/vendor'))
+	.pipe(gulp.dest('dev/js/vendor'))
 });
 
 gulp.task('babel', function() {
@@ -75,7 +75,6 @@ gulp.task('browser-sync', ['php'], function() {
 		notify:false
 	});
 });
-
 
 gulp.task('sass', function() {
 	return gulp.src('dev/scss/**/*.scss')
