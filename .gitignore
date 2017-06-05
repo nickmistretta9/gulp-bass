@@ -38,5 +38,6 @@ Thumbs.db
 
 # Project specific #
 ######################
+bower_components
 node_modules
 *.cfg
