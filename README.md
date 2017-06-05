@@ -2,8 +2,8 @@
 
 1. Create directory and CD into it
 2. Clone repo into folder 
-3. Run npm install to install necessary dependencies from package.json
-4. Edit plugins.sh file as necessary to whatever plugins are needed for project
+3. Run `npm install` to install necessary dependencies from package.json
+4. Edit plugins.sh file as necessary to add/remove any plugins that are needed for project, installed with bower
 5. Run plugins script by typing `./plugins.sh`
 6. Run `gulp` to start all tasks necessary for development
 	* Must use ctrl+c to end live-reload, or it will cause errors to re-start server
