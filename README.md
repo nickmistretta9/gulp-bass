@@ -4,7 +4,13 @@
 2. Clone repo into folder 
 3. Run npm install to install necessary dependencies from package.json
 4. Edit plugins.sh file as necessary to whatever plugins are needed for project
-5. Run plugins script by typing ./plugins.sh 
+5. Run plugins script by typing 
+```
+#!bash
+
+./plugins.sh 
+```
+
 6. Run gulp to start all tasks necessary for development
 	* Must use ctrl+c to end live-reload, or it will cause errors to re-start server
 7. Edit/add/delete files as necessary, terminal will run a bunch of commands each time something is saved
