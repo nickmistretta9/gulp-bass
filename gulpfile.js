@@ -1,16 +1,17 @@
 var gulp = require('gulp'),
 	sass = require('gulp-sass'),
-	autoprefixer = require('gulp-autoprefixer'),
+	autoprefixer = require('autoprefixer'),
 	browserSync = require('browser-sync'),
 	postcss = require('gulp-postcss'),
 	php = require('gulp-connect-php'),
 	useref = require('gulp-useref'),
 	uglify = require('gulp-uglify'),
-	cssnano = require('gulp-cssnano'),
+	cssnano = require('cssnano'),
 	gulpIf = require('gulp-if'),
 	imagemin = require('gulp-imagemin'),
 	cache = require('gulp-cache'),
 	del = require('del'),
+	flatten = require('gulp-flatten'),
 	babel = require('gulp-babel'),
 	runSequence = require('run-sequence');
 
@@ -27,32 +28,29 @@ gulp.task('images', function() {
 });
 
 gulp.task('fonts', function() {
-	return gulp.src('node_modules/**/fonts/**/*.+(svg|woff|woff2|ttf|eot|otf)')
-	.pipe(gulp.dest('dev/fonts'))
+	return gulp.src('dev/fonts')
+	.pipe(flatten())
 	.pipe(gulp.dest('dist/fonts'))
 });
 
-// gulp.task('plugins', function() {
-// 	return gulp.src('node_modules/**/*.js')
-// 	.pipe(gulp.dest('dev/js/vendor'))
-// });
 gulp.task('plugins', function() {
-	return gulp.src('bower_components/**/*.min.js || bower_components/**/*.js')
+	return gulp.src('bower_components/**/*.min.js')
+	.pipe(flatten())
 	.pipe(gulp.dest('dev/js/vendor'))
 });
+
 gulp.task('babel', function() {
 	return gulp.src('dev/js/**/*.js')
 	.pipe(babel({
 		presets: ['es2015']
 	}))
-	.pipe(gulp.dest('dist'));
+	.pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('useref', function() {
 	return gulp.src('dev/**/*.php')
 	.pipe(useref({searchPath: 'dev' }))
 	.pipe(gulpIf('*.js', uglify()))
-	.pipe(gulpIf('*.css', cssnano()))
 	.pipe(gulp.dest('dist'))
 });
 
@@ -92,8 +90,8 @@ gulp.task('sass', function() {
 	}))
 });
 
-gulp.task('build', function (callback) {
-	runSequence('clean:dist', ['useref', 'babel', 'images'], 'css', callback) 
+gulp.task('build', function () {
+	runSequence('clean:dist', ['useref', 'babel', 'images'], 'css') 
 });
 
 gulp.task('watch', ['browser-sync', 'sass'], function() {
@@ -102,6 +100,6 @@ gulp.task('watch', ['browser-sync', 'sass'], function() {
 	gulp.watch('dev/js/**/*.js', reload);
 });
 
-gulp.task('default', function(callback) {
-	runSequence(['sass', 'browser-sync', 'watch'], callback) 
+gulp.task('default', function() {
+	runSequence(['sass', 'browser-sync', 'watch']) 
 });
