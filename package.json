@@ -13,7 +13,7 @@
   "author": "Nick Mistretta",
   "license": "ISC",
   "homepage": "https://bitbucket.org/nickmistretta/gulp-bass#readme",
-  "dependencies": "" {
+  "dependencies": {
     "gulp": "^3.9.1",
     "gulp-connect-php": "0.0.8",
     "gulp-if": "^2.0.2",
