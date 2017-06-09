@@ -39,6 +39,12 @@ gulp.task('plugins', function() {
 	.pipe(gulp.dest('dev/js/vendor'))
 });
 
+gulp.task('plugin-styles', function() {
+	return gulp.src('bower_components/**/*.scss')
+	.pipe(flatten())
+	.pipe(gulp.dest('dev/scss/vendor'))
+});
+
 gulp.task('babel', function() {
 	return gulp.src('dev/js/**/*.js')
 	.pipe(babel({

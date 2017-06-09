@@ -14,4 +14,4 @@ bower install magnific-popup
 
 gulp plugins
 
-# gulp fonts
+gulp plugin-styles
