@@ -1,16 +1,18 @@
 var gulp = require('gulp'),
 	sass = require('gulp-sass'),
-	autoprefixer = require('autoprefixer'),
+	autoprefixer = require('gulp-autoprefixer'),
 	browserSync = require('browser-sync'),
 	postcss = require('gulp-postcss'),
 	php = require('gulp-connect-php'),
 	useref = require('gulp-useref'),
 	uglify = require('gulp-uglify'),
-	cssnano = require('cssnano'),
+	cssnano = require('gulp-cssnano'),
 	gulpIf = require('gulp-if'),
 	imagemin = require('gulp-imagemin'),
 	cache = require('gulp-cache'),
+	rename= require('gulp-rename'),
 	del = require('del'),
+	merge = require('merge-stream'),
 	flatten = require('gulp-flatten'),
 	babel = require('gulp-babel'),
 	runSequence = require('run-sequence');
@@ -40,9 +42,17 @@ gulp.task('plugins', function() {
 });
 
 gulp.task('plugin-styles', function() {
-	return gulp.src('bower_components/**/*.scss')
+	var css = gulp.src('bower_components/**/*.css')
+	.pipe(rename({extname: '.scss', prefix: '_'}))
 	.pipe(flatten())
-	.pipe(gulp.dest('dev/scss/vendor'))
+	.pipe(gulp.dest('dev/scss/vendor'));
+
+	var scss = gulp.src('bower_components/**/*.scss')
+	.pipe(rename({prefix: '_'}))
+	.pipe(flatten())
+	.pipe(gulp.dest('dev/scss/vendor'));
+
+	return merge(css, scss);
 });
 
 gulp.task('babel', function() {
