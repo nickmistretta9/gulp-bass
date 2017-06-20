@@ -23,6 +23,10 @@ gulp.task('clean:dist', function() {
 	return del.sync('dist');
 });
 
+gulp.task('clean:vendor', function() {
+	return del.sync('dist/js/vendor');
+});
+
 gulp.task('images', function() {
 	return gulp.src('dev/images/**/*.+(png|jpg|gif|svg)')
 	.pipe(cache(imagemin()))
@@ -117,7 +121,7 @@ gulp.task('sass', function() {
 });
 
 gulp.task('build', function () {
-	runSequence('clean:dist', ['useref', 'babel', 'images'], 'css') 
+	runSequence('clean:dist', ['useref', 'babel', 'images'], 'css', 'clean:vendor') 
 });
 
 gulp.task('watch', ['browser-sync', 'sass'], function() {
