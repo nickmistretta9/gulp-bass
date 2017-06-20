@@ -1,12 +1,12 @@
 var gulp = require('gulp'),
 	sass = require('gulp-sass'),
-	autoprefixer = require('gulp-autoprefixer'),
+	autoprefixer = require('autoprefixer'),
 	browserSync = require('browser-sync'),
 	postcss = require('gulp-postcss'),
 	php = require('gulp-connect-php'),
 	useref = require('gulp-useref'),
 	uglify = require('gulp-uglify'),
-	cssnano = require('gulp-cssnano'),
+	cssnano = require('cssnano'),
 	gulpIf = require('gulp-if'),
 	imagemin = require('gulp-imagemin'),
 	cache = require('gulp-cache'),
@@ -36,9 +36,15 @@ gulp.task('fonts', function() {
 });
 
 gulp.task('plugins', function() {
-	return gulp.src('bower_components/**/*.min.js')
+	var min = gulp.src('bower_components/**/*.min.js')
 	.pipe(flatten())
-	.pipe(gulp.dest('dev/js/vendor'))
+	.pipe(gulp.dest('dev/js/vendor'));
+
+	var reg = gulp.src('bower_components/**/*.js')
+	.pipe(flatten())
+	.pipe(gulp.dest('dev/js/vendor'));
+
+	return merge(min, reg);
 });
 
 gulp.task('plugin-styles', function() {
@@ -67,6 +73,10 @@ gulp.task('useref', function() {
 	return gulp.src('dev/**/*.php')
 	.pipe(useref({searchPath: 'dev' }))
 	.pipe(gulpIf('*.js', uglify()))
+	.on('error', function(err) {
+		console.log(err.toString());
+		this.emit('end');
+	})
 	.pipe(gulp.dest('dist'))
 });
 

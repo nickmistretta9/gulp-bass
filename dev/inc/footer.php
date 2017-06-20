@@ -20,7 +20,6 @@
 <script src="js/vendor/jquery.magnific-popup.min.js"></script>
 <script src="js/vendor/jquery.matchHeight-min.js"></script>
 <script src="js/vendor/aos.js"></script>
-<script src="js/vendor/parallax.min.js"></script>
 <script src="js/main.js"></script>
 <!-- endbuild -->
 

@@ -2,8 +2,6 @@
 
 clear
 
-bower install bootstrap
-
 bower install slick-carousel
 
 bower install aos
