@@ -14,6 +14,7 @@ var gulp = require('gulp'),
 	del = require('del'),
 	merge = require('merge-stream'),
 	flatten = require('gulp-flatten'),
+	header = require('gulp-header'),
 	babel = require('gulp-babel'),
 	runSequence = require('run-sequence');
 
@@ -25,6 +26,18 @@ gulp.task('clean:dist', function() {
 
 gulp.task('clean:vendor', function() {
 	return del.sync('dist/js/vendor');
+});
+
+gulp.task('scriptDate', function() {
+	return gulp.src('dist/js/script.min.js')
+	.pipe(header('/** Last Modified: <%= new Date() %>*/\n'))
+	.pipe(gulp.dest('dist/js'))
+});
+
+gulp.task('styleDate', function() {
+	return gulp.src('dist/css/main.css')
+	.pipe(header('/** Last Modified: <%= new Date() %>*/\n'))
+	.pipe(gulp.dest('dist/css'))
 });
 
 gulp.task('images', function() {
@@ -121,7 +134,7 @@ gulp.task('sass', function() {
 });
 
 gulp.task('build', function () {
-	runSequence('clean:dist', ['useref', 'babel', 'images'], 'css', 'clean:vendor') 
+	runSequence('clean:dist', ['useref', 'babel', 'images'], ['css', 'scriptDate', 'styleDate'], 'clean:vendor') 
 });
 
 gulp.task('watch', ['browser-sync', 'sass'], function() {
