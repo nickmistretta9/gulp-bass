@@ -47,7 +47,7 @@ gulp.task('images', function() {
 });
 
 gulp.task('fonts', function() {
-	return gulp.src('dev/fonts')
+	return gulp.src('dev/fonts/**.*')
 	.pipe(flatten())
 	.pipe(gulp.dest('dist/fonts'))
 });
@@ -134,7 +134,7 @@ gulp.task('sass', function() {
 });
 
 gulp.task('build', function () {
-	runSequence('clean:dist', ['useref', 'babel', 'images'], ['css', 'scriptDate', 'styleDate'], 'clean:vendor') 
+	runSequence('clean:dist', ['useref', 'babel', 'images', 'fonts'], 'css', ['scriptDate', 'styleDate'], 'clean:vendor') 
 });
 
 gulp.task('watch', ['browser-sync', 'sass'], function() {
