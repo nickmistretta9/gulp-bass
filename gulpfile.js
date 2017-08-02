@@ -134,7 +134,7 @@ gulp.task('sass', function() {
 });
 
 gulp.task('build', function () {
-	runSequence('clean:dist', ['useref', 'babel', 'images', 'fonts'], 'css', ['scriptDate', 'styleDate'], 'clean:vendor') 
+	runSequence('clean:dist', ['useref', 'images', 'fonts'], ['css', 'babel'], ['scriptDate', 'styleDate'], 'clean:vendor') 
 });
 
 gulp.task('watch', ['browser-sync', 'sass'], function() {
