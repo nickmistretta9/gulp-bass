@@ -98,7 +98,7 @@ gulp.task('useref', function() {
 });
 
 gulp.task('php', function() {
-	php.server({base: 'dev', port: 8010, keepalive:true});
+	php.server({base: 'dev', port: 8080, keepalive:true});
 });
 
 gulp.task('css', function() {
@@ -113,8 +113,8 @@ gulp.task('css', function() {
 
 gulp.task('browser-sync', ['php'], function() {
 	browserSync({
-		proxy: '127.0.0.1:8010',
-		port:8010,
+		proxy: '127.0.0.1:8080',
+		port:8080,
 		open:true,
 		notify:false
 	});
