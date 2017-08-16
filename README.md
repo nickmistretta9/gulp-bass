@@ -17,7 +17,8 @@
 ## Project Specific Dependencies
 1. Create directory and CD into it
 2. Clone repo into folder 
-3. Update dependencies with `ncu -u`. After that, run `ncu -a` to make sure all package files are properly updated.
+3. Remove old Git folder & create new repo for the project
+	* `rm -rf .git`, `git init`
 4. Run `yarn install` to install necessary dependencies from package.json
 5. Edit plugins.sh file as necessary to add/remove any plugins that are needed for project, installed with bower
 6. Run plugins script by using `./plugins.sh`

@@ -1,8 +1,7 @@
-<!-- Header -->
 <?php
 $pageTitle = "Title";
 $pageDescription = "Description";
-$thisPage = "Home";
+$thisPage = "Thanks";
 include('inc/header.php'); ?>
 
 <!-- Main Content -->

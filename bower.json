@@ -1,12 +1,12 @@
 {
-  "name": "gulp-bass",
+  "name": "gulp-framework",
   "description": "Web development framework using Gulp, Bootstrap and Sass",
   "main": "index.js",
   "authors": [
-    "Nick Mistretta"
+    "Driven Local Web Team"
   ],
   "license": "ISC",
-  "homepage": "https://bitbucket.org/nickmistretta/gulp-bass#readme",
+  "homepage": "https://bitbucket.org/drivenlocal/gulp-framework#readme",
   "private": true,
   "ignore": [
     "**/.*",

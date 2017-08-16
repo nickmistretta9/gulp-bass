@@ -14,13 +14,6 @@
   padding:0;
 }
 
-@mixin border-radius($radius) {
-  -webkit-border-radius: $radius;
-     -moz-border-radius: $radius;
-      -ms-border-radius: $radius;
-          border-radius: $radius;
-}
-
 @mixin box-sizing($box-model) {
   -webkit-box-sizing: $box-model; // Safari <= 5
      -moz-box-sizing: $box-model; // Firefox <= 19
@@ -202,11 +195,6 @@
   }
 }
 
-//frame
-@mixin shadow($color:rgba(0, 0, 0, 0.48)) {
-  box-shadow: 2px 2px 3px 1px $color;
-}
-
 //Converting px to em
 
 @mixin em($px, $em: $font-size-base) {
@@ -268,9 +256,4 @@
       right:auto;
     }
   }
-}
-
-//Background image centering
-@function background-focus($ratio, $bg, $box: 50) {
-  @return (($bg + (50 - $box)/$ratio - 50) * ($ratio / ($ratio - 1)) + 50) * 1%;
 }

@@ -1,4 +1,3 @@
-<!-- Header -->
 <?php
 $pageTitle = "Title";
 $pageDescription = "Description";
@@ -8,7 +7,6 @@ include('inc/header.php'); ?>
 <!-- Main Content -->
 <section class="main-content">
 </section>
-
 
 <!-- Footer -->
 <?php include 'inc/footer.php'; ?>

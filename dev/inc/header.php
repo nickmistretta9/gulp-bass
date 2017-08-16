@@ -5,19 +5,19 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><?php
-       if (isset($pageTitle)) {
-       echo $pageTitle;
-       } else {
-       echo "";
-       }
+        if (isset($pageTitle)) {
+        echo $pageTitle;
+        } else {
+        echo "Title";
+        }
     ?></title>
-    <meta name="description" content=<?php
-       if (isset($pageDescription)) {
-       echo $pageDescription;
-       } else {
-       echo "";
-       }
-    ?>"">
+    <meta name="description" content="<?php
+        if (isset($pageDescription)) {
+        echo $pageDescription;
+        } else {
+        echo "Description";
+        }
+    ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="theme-color" content="#FFFFFF" />
@@ -26,38 +26,39 @@
     <link type='text/css' rel="stylesheet" href="css/main.css">
     
     <!-- jQuery Library -->  
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Google Analytics Tag -->
 
 </head>
 <body>
-<?php if( ! ini_get('date.timezone') )
-{
-    date_default_timezone_set('EST');
-} ?>
-<div id="st-container" class="st-container">
-    <nav class="st-menu st-effect-4" id="menu-4">
-        <h2>Main Navigation</h2>
-        <ul class="nav navbar-nav">
-            <li><a href="#">Example</a></li>
-        </ul>
-    </nav>
-<div class="st-pusher">
-<div class="st-content">
-<div class="st-content-inner">
-
+<?php
+    if( ! ini_get('date.timezone') ) {
+        date_default_timezone_set('EST');
+    }
+?>
 <header class="site-header">
-	
+	<div class="container-fluid">
+        <div class="logo">
+            <a href="./"><img src="images/logo.png" alt=""></a>
+        </div>   
+    </div>
 </header>
 <nav class="navbar navbar-default">
     <div class="container-fluid">
-        <div id="st-trigger-effects" class="column">
-            <button class="mobile-toggle" data-effect="st-effect-4"><i class="fa fa-bars"></i></button>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav" aria-expanded="false"><i class="fa fa-bars"></i> Navigation</button>
         </div>
         <div class="collapse navbar-collapse" id="main-nav">
             <ul class="nav navbar-nav">
                 <li><a href="#">Example</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Example</a></li>
+                        <li><a href="#">Another example</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>

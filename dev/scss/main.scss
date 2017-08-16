@@ -1,30 +1,36 @@
+// Framework & Variables | define all variables in vendor/bootstrap/_variables.scss
 @import
   'base/reset',
-  'vendor/bootstrap',
-  'vendor/font-awesome';
+  'vendor/bootstrap';
 
+// Helpful Mixins & Base Styles
 @import
-  'utils/mixins';
-
-@import
+  'utils/mixins',
   'base/base',
   'base/fontstack',
-  'base/typography',
-  'base/no-gutters',
-  'base/wordpress';
+  'base/typography';
 
+// Optional Vendor Plugins
+// @import
+//   'vendor/aos',
+//   'vendor/magnific-popup',
+//   'vendor/slick',
+//   'vendor/slick-theme',
+//   'vendor/font-awesome';
+
+// Main Layout Styles
 @import
   'layout/header', 
-  'layout/body',
   'layout/nav',
-//   'layout/sidebar',
+  'layout/content',
+  'layout/sidebar',
   'layout/footer';
 
-// @import
-//    'modules/form',
-//    'modules/slick',
-//	  'modules/aos',
-//	  'modules/magnific';
+// Sections that may be repeated throughout the site
+@import
+  'modules/reviews',
+  'modules/form';
 
-// @import
-//   'pages/home';
+// Styles specific to certain pages
+@import
+  'pages/home';

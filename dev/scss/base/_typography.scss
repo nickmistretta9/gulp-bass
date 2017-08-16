@@ -22,27 +22,18 @@
 	}
 }
 
-.check-list {
+.checklist {
 	@extend .list-unstyled;
 
 	li {
+		padding-left: 21px;
+		text-transform: uppercase;
+
 		&:before {
 			font-family: 'FontAwesome';
 			content: '\f00c';
-			margin: 0 0.5em 0 0;
+			margin: 0 5px 0 -21px;
 			color: $brand-primary;
-		}
-	}
-}
-
-.wrench-list {
-	@extend .list-unstyled;
-
-	li {
-		&:before {
-			font-family: 'FontAwesome';
-			content: '\f0ad';
-			margin: 0 0.5em 0 0;
 		}
 	}
 }
