@@ -206,6 +206,15 @@
   min-height: 100vh;
 }
 
+@mixin fixed-bg($image, $height: 400px) {
+  background-image:url('../images/#{$image}.jpg');
+  background-attachment:fixed;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:cover;
+  min-height:$height;
+}
+
 //Creating diagonal borders
 @mixin diagonal-border($top, $right, $left, $bottom, $color:$brand-primary, $dir:tb) {
   @if $dir==tb {
