@@ -34,6 +34,18 @@ gulp.task('scriptDate', function() {
 	.pipe(gulp.dest('dist/js'))
 });
 
+gulp.task('extras', function() {
+	var access = gulp.src('dev/.htaccess')
+	.pipe(flatten())
+	.pipe(gulp.dest('dist'));
+
+	var robots = gulp.src('dev/robots.txt')
+	.pipe(flatten())
+	.pipe(gulp.dest('dist'));
+
+	return merge(access, robots);
+});
+
 gulp.task('styleDate', function() {
 	return gulp.src('dist/css/main.css')
 	.pipe(header('/** Last Modified: <%= new Date() %>*/\n'))
@@ -134,7 +146,7 @@ gulp.task('sass', function() {
 });
 
 gulp.task('build', function () {
-	runSequence('clean:dist', ['useref', 'images', 'fonts'], ['css', 'babel'], ['scriptDate', 'styleDate'], 'clean:vendor') 
+	runSequence('clean:dist', ['useref', 'images', 'fonts'], ['css', 'babel'], ['scriptDate', 'styleDate'], ['clean:vendor', 'extras']) 
 });
 
 gulp.task('watch', ['browser-sync', 'sass'], function() {
