@@ -16,7 +16,6 @@ var gulp = require('gulp'),
 	flatten = require('gulp-flatten'),
 	header = require('gulp-header'),
 	babel = require('gulp-babel'),
-	purify = require('gulp-purifycss'),
 	runSequence = require('run-sequence');
 
 var reload = browserSync.reload;
@@ -121,7 +120,6 @@ gulp.task('css', function() {
 	];
 	return gulp.src('dev/css/*.css')
 	.pipe(postcss(plugins))
-	.pipe(purify(['dev/*.php', 'dev/js/script.min.js']))
 	.pipe(gulp.dest('dist/css'));
 });
 
