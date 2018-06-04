@@ -1,15 +1,5 @@
 .container-fluid {
-	max-width: 1170px;
-}
-.show-on-hover {
-	@include max-width($grid-float-breakpoint-max) {
-		&:not(.open)>.dropdown-menu, &:not(.open):hover>.dropdown-menu {
-			display: none;
-		}
-	}
-	&:hover>.dropdown-menu {
-		display: block;
-	}
+	max-width: 1300px;
 }
 
 .row.no-gutter {
@@ -23,6 +13,22 @@
 	padding-left: 0;
 }
 
+.videoWrapper {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+
+	iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border: 1px solid #000;
+	}
+}
+
 img {
 	max-width: 100%;
 	height: auto;
@@ -31,18 +37,18 @@ img {
 		float: left;
 		margin: 0 8px 8px 0;
 
-		@include max-width($screen-sm) {
+		@include media-breakpoint-down(md) {
 			float: none;
 			display: block;
 			margin: 8px auto;
 		}
 	}
 
-	&.alignleft {
+	&.alignright {
 		float: right;
 		margin: 0 0 8px 8px;
 
-		@include max-width($screen-sm) {
+		@include media-breakpoint-down(md) {
 			float: none;
 			display: block;
 			margin: 8px auto;
@@ -57,7 +63,7 @@ img {
 	&.alignnone {
 		margin: 0 0 8px;
 
-		@include max-width($screen-sm) {
+		@include media-breakpoint-down(md) {
 			display: block;
 			margin: 8px auto;
 		}

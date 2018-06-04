@@ -1,4 +1,8 @@
 RewriteEngine on
+# Force https #
+#Uncomment these to push to server# # RewriteCond %{HTTPS} !=on [NC]
+#Uncomment these to push to server# # RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
+# End Force https #
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ $1.php

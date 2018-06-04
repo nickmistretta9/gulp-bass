@@ -28,6 +28,9 @@
     <!-- jQuery Library -->  
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+    <!-- FontAwesome CDN Link -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
     <!-- Google Analytics Tag -->
 
 </head>
@@ -44,19 +47,20 @@
         </div>   
     </div>
 </header>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-expand-md">
     <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav" aria-expanded="false"><i class="fa fa-bars"></i> Navigation</button>
-        </div>
-        <div class="collapse navbar-collapse" id="main-nav">
-            <ul class="nav navbar-nav">
-                <li><a href="#">Example</a></li>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbarSm">
+            <span class="navbar-toggler-icon"></span> Navigation
+        </button>
+        <div class="navbar-collapse collapse" id="collapsingNavbarSm">
+            <ul class="navbar-nav">
+                <li><a class="nav-link" href="">Example</a></li>
+                <li><a class="nav-link" href="">Another example</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Dropdown <span class="caret"></span></a>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">Dropdown</a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Example</a></li>
-                        <li><a href="#">Another example</a></li>
+                        <li><a href="" class="dropdown-item">Example</a></li>
+                        <li><a href="" class="dropdown-item">Another example</a></li>
                     </ul>
                 </li>
             </ul>

@@ -1,4 +1,5 @@
 # README #
+For any bugs encountered, or if you would like to see something specific featured in the framework, please ask Nick or Amanda to make the updates.
 
 ## Global Dependencies
 1. Node & NPM
@@ -6,11 +7,9 @@
 	* Windows - Use the package installer from http://nodejs.org/
 2. Gulp
 	* `npm install -g gulp-cli`
-3. Npm Check Updates
-	* `npm i -g npm-check-updates`
-4. Bower
+3. Bower
 	* `npm install -g bower`
-5. Yarn
+4. Yarn
 	* Mac - `brew install yarn`
 	* Windows - Download installer from https://yarnpkg.com/lang/en/docs/install/#windows-tab
 

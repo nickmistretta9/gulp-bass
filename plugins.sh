@@ -13,3 +13,5 @@ bower install magnific-popup --save
 gulp plugins
 
 gulp plugin-styles
+
+gulp fontawesome
