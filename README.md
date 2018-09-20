@@ -1,5 +1,5 @@
 # README #
-For any bugs encountered, or if you would like to see something specific featured in the framework, please ask Nick to make the updates.
+For any bugs encountered, or if you would like to see something specific featured in the framework, please ask Nick or Amanda to make the updates.
 
 ## Global Dependencies
 1. Node & NPM

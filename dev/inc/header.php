@@ -29,7 +29,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- FontAwesome CDN Link -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 
     <!-- Google Analytics Tag -->
 

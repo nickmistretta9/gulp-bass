@@ -1,5 +1,0 @@
-{
-	"scripts": {
-		"postinstall": "rm -rf bower_components/aos/src && rm -rf bower_components/magnific-popup/src && rm -rf bower_components/jquery"
-	}
-}

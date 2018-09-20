@@ -16,7 +16,9 @@ var gulp = require('gulp'),
 	flatten = require('gulp-flatten'),
 	header = require('gulp-header'),
 	babel = require('gulp-babel'),
-	runSequence = require('run-sequence');
+	runSequence = require('run-sequence'),
+	favicons = require('favicons').stream,
+	gutil = require('gulp-util');
 
 var reload = browserSync.reload;
 var port = 8080;
@@ -48,7 +50,7 @@ gulp.task('plugin-styles', function() {
 });
 
 gulp.task('fontawesome', function() {
-	return gulp.src('node_modules/@fortawesome/fontawesome-free-webfonts/webfonts/**.*')
+	return gulp.src('node_modules/@fortawesome/fontawesome-free/webfonts/**.*')
 	.pipe(flatten())
 	.pipe(gulp.dest('dev/fonts'))
 });
@@ -73,7 +75,14 @@ gulp.task('images', function() {
 gulp.task('css', function() {
 	var plugins = [
 		autoprefixer({browsers:['last 2 versions']}),
-		cssnano()
+		cssnano({
+		   reduceIdents: {
+		       keyframes: false
+		   },
+		   discardUnused: {
+		       keyframes: false
+		   }
+		})
 	];
 	return gulp.src('dev/css/*.css')
 	.pipe(postcss(plugins))
@@ -114,6 +123,31 @@ gulp.task('babel', function() {
 
 gulp.task('clean:dist', function() {
 	return del.sync('dist');
+});
+
+gulp.task('install-favicons', function() {
+	return gulp.src('dev/images/favicon.png').pipe(favicons({
+		icons: {
+			android:false,
+			appleIcon:false,
+			appleStartup:false,
+			coast:false,
+			favicons:true,
+			firefox:false,
+			windows:false,
+			yandex:false
+		}
+	}))
+	.on("error", gutil.log)
+	.pipe(gulp.dest('dev'));
+});
+
+gulp.task('clean-favicons', function() {
+	return del.sync('dev/favicon-*.*');
+});
+
+gulp.task('favicons', function() {
+	runSequence('install-favicons', 'clean-favicons')
 });
 
 gulp.task('clean:vendor', function() {
@@ -163,5 +197,5 @@ gulp.task('default', function() {
 });
 
 gulp.task('build', function () {
-	runSequence('clean:dist', ['useref', 'images'], ['css', 'babel'], ['scriptDate', 'styleDate'], ['clean:vendor', 'extras']) 
+	runSequence('clean:dist', ['useref', 'images', 'favicons'], ['css', 'babel'], ['scriptDate', 'styleDate'], ['clean:vendor', 'extras']) 
 });
